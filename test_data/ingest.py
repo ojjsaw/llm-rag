@@ -35,8 +35,11 @@ def create_vector_db():
 
     embeddings=HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2',
         model_kwargs={'device':'cpu'})
+    print("------------from docs")
     db=FAISS.from_documents(texts,embeddings)
+    print("-------------saving")
     db.save_local(DB_FAISS_PATH)
+    print("-----------saved")
 
 if __name__=="__main__":
     create_vector_db()
